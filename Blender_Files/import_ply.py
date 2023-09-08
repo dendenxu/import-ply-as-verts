@@ -565,7 +565,7 @@ def load_ply_verts(self, filepath, ply_name):
 
     colindices = el.index(b'radius')
     if colindices != -1:
-        bpy.context.active_object.data.attributes.new(name="Radius", type='Float', domain='Vertex')
+        bpy.context.active_object.data.attributes.new(name="Radius", type='FLOAT', domain='POINT')
         radius = bpy.context.active_object.data.attributes['Radius'].data
         for i in range(len(verts)):
             radius[i].value = verts[i][colindices]
