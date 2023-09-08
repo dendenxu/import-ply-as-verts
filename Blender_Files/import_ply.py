@@ -563,6 +563,13 @@ def load_ply_verts(self, filepath, ply_name):
                 newcolor.attributes['Col'].data[i].color[2] = (verts[i][colindices[2]]) / 255.0
                 newcolor.attributes['Col'].data[i].color[3] = (verts[i][colindices[3]]) / 255.0
 
+    colindices = el.index(b'radius')
+    if colindices != -1:
+        bpy.context.active_object.data.attributes.new(name="Radius", type='Float', domain='Vertex')
+        radius = bpy.context.active_object.data.attributes['Radius'].data
+        for i in range(len(verts)):
+            radius[i].value = verts[i][colindices]
+ 
     mesh.update()
     mesh.validate()
 
